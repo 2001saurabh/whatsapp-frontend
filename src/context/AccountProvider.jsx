@@ -12,7 +12,7 @@ const AccountProvider = ({ children }) => {
 
   // const URL = "ws://localhost:9000";
 
-  const URL = "https://whatsapp-socket.vercel.app/";
+  const URL = "https://whatsapp-socket.vercel.app";
   // const URL = "https://socket-d2db.onrender.com";
 
   useEffect(() => {
