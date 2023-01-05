@@ -15,6 +15,7 @@ const AccountProvider = ({ children }) => {
   // const URL = "https://whatsapp-socket.vercel.app";
   const URL = "https://whatsappsocket.onrender.com";
 
+
   useEffect(() => {
     socket.current = io(`${URL}`);
   }, []);
