@@ -111,7 +111,7 @@ const ContactsListItem = ({ contactDetails }) => {
                   variant="body2"
                   color="text.secondary"
                 >
-                  {latestMsg?.text?.includes("localhost"|| "whatsapp-backend-ten.vercel.app") ? (
+                  {latestMsg?.text?.includes("whatsapp-backend-ten") ? (
                     <Media />
                   ) : (
                     latestMsg.text

@@ -36,35 +36,42 @@ const Messanges = ({ person, conversation }) => {
         createAt: Date.now(), // this messages are coming from socket and their is no model(timestamp) so we need to add it.
       });
     });
-  });
+  },[]);
 
-  useEffect(() => {
-    incomingMessage &&
-      conversation?.members?.includes(incomingMessage.senderId) &&
-      setMessages((prev) => [...prev, incomingMessage]);
-  }, [incomingMessage, conversation]);
-  // fetch all messages from db as soon component get render
-
+    // fetch all messages from db as soon component get render
   useEffect(() => {
     const getMessageDetails = async () => {
       let data = await getMessages(conversation?._id);
       // console.log(data);
       setMessages(data);
     };
-    conversation?._id && getMessageDetails();
+    // conversation?._id &&
+     getMessageDetails();
     // if person changes that means we clicked on another contact
     //so we need to call another get api for their messages
     // also useEffect should call when we send new messages
   }, [person?._id, conversation?._id, newMsgFlag]);
 
-  // changining scroll position at the render of messages
-  useEffect(() => {
+
+   // changining scroll position at the render of messages
+   useEffect(() => {
     scrollRef.current?.scrollIntoView({
       behavior: "smooth",
       block: "end",
       inline: "nearest",
     });
   }, [messages]);
+
+
+  useEffect(() => {
+    incomingMessage &&
+      conversation?.members?.includes(incomingMessage.senderId) &&
+      setMessages((prev) => [...prev, incomingMessage]);
+  }, [incomingMessage, conversation]);
+
+
+  
+ 
 
   const sendMessage = async (e) => {
     // console.log("event", e);
