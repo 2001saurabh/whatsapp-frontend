@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const url = "http://localhost:5000";
-const url = "https://whatsapp-backend-ten.vercel.app/";
+const url = "https://whatsapp-backend-ten.vercel.app";
 
 export const addUser = async (data) => {
   try {
