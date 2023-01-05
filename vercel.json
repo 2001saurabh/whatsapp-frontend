@@ -1,0 +1,6 @@
+{
+    "name": "whatsapp-clone-frontend",
+    "scripts": {
+      "build": "react-scripts build"
+    }
+  }
