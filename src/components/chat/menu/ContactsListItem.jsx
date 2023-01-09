@@ -18,6 +18,18 @@ const TimeText = styled(Typography)`
   color: gray;
 `;
 
+// const Container = styled(Box)`
+//   display: flex;
+// `;
+// const Text = styled(Typography)`
+//   display: block;
+//   color: rgba(0, 0, 0, 0.6);
+//   font-size: 14px;
+//   max-width: 100%;
+//   text-overflow: ellipsis;
+//   overflow: hidden;
+// `;
+
 const Media = () => {
   return (
     <Box sx={{ display: "flex" }}>
@@ -78,7 +90,7 @@ const ContactsListItem = ({ contactDetails }) => {
                   ml: 1,
                   width: "100%",
                   p: 0,
-                  whiteSpace: "noWrap",
+                  overflow: "hidden",
                 }}
               >
                 <Box
@@ -87,36 +99,42 @@ const ContactsListItem = ({ contactDetails }) => {
                     m: 0,
                     p: 0,
                     justifyContent: "space-between",
+                    whiteSpace: "noWrap",
                   }}
                 >
-                  <Box>{contactDetails.name}</Box>
+                  <Typography>{contactDetails.name}</Typography>
 
-                  <Box>
-                    <TimeText>
-                      {latestMsg?.text &&
-                        moment(latestMsg?.timestamp).format("LT").toLowerCase()}
-                    </TimeText>
-                  </Box>
+                  <TimeText>
+                    {latestMsg?.text &&
+                      moment(latestMsg?.timestamp).format("LT").toLowerCase()}
+                  </TimeText>
                 </Box>
-
-                <Typography
+                <Box
                   sx={{
-                    display: "block",
-                    maxWidth: "100%",
-                    textOverflow: "ellipsis",
-                    overflow: "hidden",
-                    mt: 1,
+                    whiteSpace: "noWrap",
+                    width: "98%",
                   }}
-                  component={"span"}
-                  variant="body2"
-                  color="text.secondary"
                 >
-                  {latestMsg?.text?.includes("whatsapp-backend-ten") ? (
-                    <Media />
-                  ) : (
-                    latestMsg.text
-                  )}
-                </Typography>
+                  <Typography
+                    sx={{
+                      display: "block",
+                      maxWidth: "100%",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+
+                      mt: 1,
+                    }}
+                    component={"span"}
+                    variant="body2"
+                    color="text.secondary"
+                  >
+                    {latestMsg?.text?.includes("whatsapp-backend-ten") ? (
+                      <Media />
+                    ) : (
+                      latestMsg.text
+                    )}
+                  </Typography>
+                </Box>
               </Box>
             </ListItemButton>
           </ListItem>
